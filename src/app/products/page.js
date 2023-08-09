@@ -79,12 +79,13 @@ const ConfirmBuy = () => {
               <option value="PURCHASE_CONFIRMED">
                 Compra Realizada (PURCHASE_CONFIRMED)
               </option>
-              // <option value="PURCHASE_REFUNDED">
-              //   Reembolso (PURCHASE_REFUNDED)
-              // </option>
-              // <option value="PURCHASE_CHARGED_BACKED">
-              //   Estorno (PURCHASE_CHARGED_BACKED)
-              // </option>
+              /* <option value="PURCHASE_REFUNDED">
+                   Reembolso (PURCHASE_REFUNDED)
+                 </option>
+                 <option value="PURCHASE_CHARGED_BACKED">
+                   Estorno (PURCHASE_CHARGED_BACKED)
+               </option>
+               */
             </select>
           </div>
         </div>

@@ -1,0 +1,73 @@
+export const products = [
+  {
+    charge_id: generateRandomNumberAsString(),
+    currency: "BRL",
+    order_amount: "497.00",
+    order_id: generateRandomNumberAsString(),
+    payment_checkout_platform: "samcart",
+    payment_processor: "Stripe",
+    product_name: "Amazon Web Services Bootcamp - One Time Payment OC",
+    product_id: "600090",
+    special_param1: "null",
+    special_param2: "null",
+    special_param3: "null",
+    special_param4: "null",
+    special_param5: "null",
+    subscription_id: generateRandomNumberAsString(),
+    transaction_id: generateRandomNumberAsString(),
+    utm_campaign: "null",
+    utm_medium: "msg",
+    utm_source: "growth",
+    utm_term: "null",
+  },
+  {
+    charge_id: generateRandomNumberAsString(),
+    currency: "BRL",
+    order_amount: "297.00",
+    order_id: generateRandomNumberAsString(),
+    payment_checkout_platform: "samcart",
+    payment_processor: "Stripe",
+    product_name: "Google Cloud Platform - One Time Payment OC",
+    product_id: "600091",
+    special_param1: "null",
+    special_param2: "null",
+    special_param3: "null",
+    special_param4: "null",
+    special_param5: "null",
+    subscription_id: generateRandomNumberAsString(),
+    transaction_id: generateRandomNumberAsString(),
+    utm_campaign: "null",
+    utm_medium: "msg",
+    utm_source: "growth",
+    utm_term: "null",
+  },
+  {
+    charge_id: generateRandomNumberAsString(),
+    currency: "BRL",
+    order_amount: "997.00",
+    order_id: generateRandomNumberAsString(),
+    payment_checkout_platform: "samcart",
+    payment_processor: "Stripe",
+    product_name: "Microsoft Azure Bootcamp - One Time Payment OC",
+    product_id: "600092",
+    special_param1: "null",
+    special_param2: "null",
+    special_param3: "null",
+    special_param4: "null",
+    special_param5: "null",
+    subscription_id: generateRandomNumberAsString(),
+    transaction_id: generateRandomNumberAsString(),
+    utm_campaign: "null",
+    utm_medium: "msg",
+    utm_source: "growth",
+    utm_term: "null",
+  },
+];
+
+function generateRandomNumberAsString() {
+  const min = 1000000; // Minimum 7-digit number
+  const max = 9999999; // Maximum 7-digit number
+
+  const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
+  return randomNumber.toString();
+}

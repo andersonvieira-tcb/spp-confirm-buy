@@ -34,6 +34,12 @@ const ConfirmBuy = () => {
   const onChangeFunc = (e) => {
     setEventType(e.target.value);
 
+    // if (e.target.value === "PURCHASE_CONFIRMED") {
+    //   setOrderId("");
+    //   setSubscriptionId("");
+    //   setChargeID("");
+    //   setTransactionId("");
+    // }
   };
 
   const onSubmitFunc = async (e) => {
@@ -48,7 +54,9 @@ const ConfirmBuy = () => {
     };
     if (event_type !== "PURCHASE_CONFIRMED") {
       data.order_id = order_id;
-
+      // data.subscription_id = subscription_id;
+      // data.transaction_id = transaction_id;
+      // data.charge_id = charge_id;
     }
     setLoading(true);
 
@@ -124,7 +132,7 @@ const ConfirmBuy = () => {
                   name="order_id"
                   required
                 />
-                <label htmlFor="transaction_id">transaction_id</label>
+                {/* <label htmlFor="transaction_id">transaction_id</label>
                 <input
                   onChange={(e) => setTransactionId(e.target.value)}
                   type={"text"}
@@ -144,7 +152,7 @@ const ConfirmBuy = () => {
                   type={"text"}
                   name="subscription_id"
                   required
-                />
+                /> */}
               </>
             ) : (
               <>

@@ -13,6 +13,12 @@ const ConfirmBuy = () => {
   const [customer_email, setCustomerEmail] = useState("");
   const [customer_first_name, setCustomerFirstName] = useState("");
   const [customer_last_name, setCustomerLastName] = useState("");
+
+  const [order_id, setOrderId] = useState("");
+  const [subscription_id, setSubscriptionId] = useState("");
+  const [charge_id, setChargeID] = useState("");
+  const [transaction_id, setTransactionId] = useState("");
+
   const searchParams = useSearchParams();
   const utm_content = searchParams.get("utm_content");
   const product_id = searchParams.get("product_id");
@@ -25,6 +31,11 @@ const ConfirmBuy = () => {
     redirect("/");
   }
 
+  const onChangeFunc = (e) => {
+    setEventType(e.target.value);
+
+  };
+
   const onSubmitFunc = async (e) => {
     e.preventDefault();
     const data = {
@@ -35,6 +46,10 @@ const ConfirmBuy = () => {
       event_type,
       utm_content,
     };
+    if (event_type !== "PURCHASE_CONFIRMED") {
+      data.order_id = order_id;
+
+    }
     setLoading(true);
 
     const res = await post(data);
@@ -74,10 +89,16 @@ const ConfirmBuy = () => {
               name="select"
               className="select-products"
               value={event_type}
-              onChange={(e) => setEventType(e.target.value)}
+              onChange={onChangeFunc}
             >
               <option value="PURCHASE_CONFIRMED">
                 Compra Realizada (PURCHASE_CONFIRMED)
+              </option>
+              <option value="PURCHASE_REFUNDED">
+                Reembolso (PURCHASE_REFUNDED)
+              </option>
+              <option value="PURCHASE_CHARGED_BACKED">
+                Estorno (PURCHASE_CHARGED_BACKED)
               </option>
             </select>
           </div>
@@ -88,31 +109,70 @@ const ConfirmBuy = () => {
             type="button"
             onClick={() => window.location.reload()}
           >
-            Comprar novamente
+            {event_type === "PURCHASE_CONFIRMED"
+              ? "Comprar novamente"
+              : "Enviar outra solicitação"}
           </button>
         ) : (
           <form onSubmit={onSubmitFunc}>
-            <label htmlFor="customer_email">Email do comprador</label>
-            <input
-              onChange={(e) => setCustomerEmail(e.target.value)}
-              type={"email"}
-              name="customer_email"
-              required
-            />
-            <label htmlFor="customer_first_name">Nome do comprador</label>
-            <input
-              onChange={(e) => setCustomerFirstName(e.target.value)}
-              type={"text"}
-              name="customer_first_name"
-              required
-            />
-            <label htmlFor="customer_last_name">Sobrenome do comprador</label>
-            <input
-              onChange={(e) => setCustomerLastName(e.target.value)}
-              type={"text"}
-              name="customer_last_name"
-              required
-            />
+            {event_type !== "PURCHASE_CONFIRMED" ? (
+              <>
+                <label htmlFor="order_id">order_id</label>
+                <input
+                  onChange={(e) => setOrderId(e.target.value)}
+                  type={"text"}
+                  name="order_id"
+                  required
+                />
+                <label htmlFor="transaction_id">transaction_id</label>
+                <input
+                  onChange={(e) => setTransactionId(e.target.value)}
+                  type={"text"}
+                  name="transaction_id"
+                  required
+                />
+                <label htmlFor="charge_id">charge_id</label>
+                <input
+                  onChange={(e) => setChargeID(e.target.value)}
+                  type={"text"}
+                  name="charge_id"
+                  required
+                />
+                <label htmlFor="subscription_id">subscription_id</label>
+                <input
+                  onChange={(e) => setSubscriptionId(e.target.value)}
+                  type={"text"}
+                  name="subscription_id"
+                  required
+                />
+              </>
+            ) : (
+              <>
+                <label htmlFor="customer_email">Email do comprador</label>
+                <input
+                  onChange={(e) => setCustomerEmail(e.target.value)}
+                  type={"email"}
+                  name="customer_email"
+                  required
+                />
+                <label htmlFor="customer_first_name">Nome do comprador</label>
+                <input
+                  onChange={(e) => setCustomerFirstName(e.target.value)}
+                  type={"text"}
+                  name="customer_first_name"
+                  required
+                />
+                <label htmlFor="customer_last_name">
+                  Sobrenome do comprador
+                </label>
+                <input
+                  onChange={(e) => setCustomerLastName(e.target.value)}
+                  type={"text"}
+                  name="customer_last_name"
+                  required
+                />
+              </>
+            )}
             {loading ? (
               <div className="flex justify-center py-2">
                 <ReactLoading
@@ -123,7 +183,11 @@ const ConfirmBuy = () => {
                 />
               </div>
             ) : (
-              <button type="submit">Confirmar compra</button>
+              <button type="submit">
+                {event_type === "PURCHASE_CONFIRMED"
+                  ? "Confirmar compra"
+                  : "Enviar solicitação"}
+              </button>
             )}
           </form>
         )}

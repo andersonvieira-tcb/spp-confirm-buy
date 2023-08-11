@@ -70,7 +70,7 @@ export const products = [
     order_id: generateRandomNumberAsString(),
     payment_checkout_platform: "spp platform",
     payment_processor: "spp",
-    product_name: "Oraacle Bootcamp - One Time Payment OC",
+    product_name: "Oracle Bootcamp - One Time Payment OC",
     product_id: "600093",
     special_param1: "null",
     special_param2: "null",

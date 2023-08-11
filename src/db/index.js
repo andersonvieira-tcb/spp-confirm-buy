@@ -62,6 +62,28 @@ export const products = [
     utm_source: "growth",
     utm_term: "null",
   },
+  ,
+  {
+    charge_id: generateRandomNumberAsString(),
+    currency: "USD",
+    order_amount: "597.00",
+    order_id: generateRandomNumberAsString(),
+    payment_checkout_platform: "spp platform",
+    payment_processor: "spp",
+    product_name: "Oraacle Bootcamp - One Time Payment OC",
+    product_id: "600093",
+    special_param1: "null",
+    special_param2: "null",
+    special_param3: "null",
+    special_param4: "null",
+    special_param5: "null",
+    subscription_id: generateRandomNumberAsString(),
+    transaction_id: generateRandomNumberAsString(),
+    utm_campaign: "null",
+    utm_medium: "msg",
+    utm_source: "growth",
+    utm_term: "null",
+  },
 ];
 
 function generateRandomNumberAsString() {

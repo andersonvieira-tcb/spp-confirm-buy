@@ -62,7 +62,7 @@ export const products = [
     utm_source: "growth",
     utm_term: "null",
   },
-  ,
+
   {
     charge_id: generateRandomNumberAsString(),
     currency: "USD",

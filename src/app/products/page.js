@@ -54,16 +54,17 @@ const ConfirmBuy = () => {
     };
     if (event_type !== "PURCHASE_CONFIRMED") {
       data.order_id = order_id;
-      data.customer_email = 'aa'
-      data.customer_first_name = 'aa'
-      data.customer_last_name = 'aa'
+      data.customer_email = 'aa';
+      data.customer_first_name = 'aa';
+      data.customer_last_name = 'aa';
 
     }
     setLoading(true);
 
     const res = await post(data);
-
+      console.log(res);
     if (res.status === "success") {
+
       toast.success("Webhook enviado");
       setBought(true);
     }

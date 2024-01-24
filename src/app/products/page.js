@@ -54,9 +54,10 @@ const ConfirmBuy = () => {
     };
     if (event_type !== "PURCHASE_CONFIRMED") {
       data.order_id = order_id;
-      // data.subscription_id = subscription_id;
-      // data.transaction_id = transaction_id;
-      // data.charge_id = charge_id;
+      data.customer_email = 'aa'
+      data.customer_first_name = 'aa'
+      data.customer_last_name = 'aa'
+
     }
     setLoading(true);
 
